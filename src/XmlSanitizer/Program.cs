@@ -14,9 +14,11 @@ namespace XmlSanitizer
         /// <param name="feedXml"></param>
         static void Main(FileInfo feedXml, FileInfo currentSkusCsv, string outputXML = "output.xml")
         {
-            Utility.ReadXml(feedXml.FullName);
-            Utility.LoadVsv(currentSkusCsv.FullName);
-            Console.WriteLine($"Hello {outputXML}!");
+            var existingSkus = Utility.LoadCsv(currentSkusCsv.FullName);
+
+            var processor = new XmlProcessor(feedXml.FullName, outputXML, (id) => existingSkus.Contains(id));
+
+            processor.Process();
         }
     }
 }

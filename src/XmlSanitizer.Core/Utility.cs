@@ -1,57 +1,26 @@
-﻿using CsvHelper;
-using System;
-using System.Globalization;
+﻿using System;
 using System.IO;
 using System.Xml;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace XmlSanitizer.Core
 {
     public class Utility
     {
-        public static void ReadXml(string filePath)
+        public static HashSet<string> LoadCsv(string filePath)
         {
-            var stopWatch = System.Diagnostics.Stopwatch.StartNew();
-            stopWatch.Start();
-            XmlReaderSettings settings = new XmlReaderSettings();
-            settings.IgnoreWhitespace = true;
-
-            using (var fileStream = File.OpenText(filePath))
-            using (XmlReader reader = XmlReader.Create(fileStream, settings))
+            var result = new HashSet<string>();
+            using (var reader = new StreamReader(filePath))
+            //using (var csv = new TextReader(reader))
             {
-                while (reader.Read())
+                while(reader.EndOfStream == false)
                 {
-                    switch (reader.NodeType)
-                    {
-                        case XmlNodeType.Element:
-                            //Console.WriteLine($"Start Element: {reader.Name}. Has Attributes? : {reader.HasAttributes}");
-                            break;
-                        case XmlNodeType.Text:
-                            //Console.WriteLine($"Inner Text: {reader.Value}");
-                            break;
-                        case XmlNodeType.EndElement:
-                            //Console.WriteLine($"End Element: {reader.Name}");
-                            break;
-                        default:
-                            //Console.WriteLine($"Unknown: {reader.NodeType}");
-                            break;
-                    }
+                    string line = reader.ReadLine();
+                    result.Add(line);
                 }
             }
-            stopWatch.Stop();
 
-            Console.WriteLine(stopWatch.Elapsed);
-
-        }
-
-        public static void LoadVsv(string filePath)
-        {
-            using (var reader = new StreamReader(filePath))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                var records = csv.GetRecords<string>();
-                var list = records.ToList();
-            }
+            return result;
         }
     }
 }
