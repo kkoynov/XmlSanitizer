@@ -11,9 +11,9 @@ namespace XmlSanitizer.CLI
         /// <param name="inputXml">The xml file that will be filtered.</param>
         /// <param name="currentSkusCsv"></param>
         /// <param name="outputXmlFilePath">The path to the output xml file.Default is output.xml</param>
-        static void Main(FileInfo inputXml, FileInfo currentSkusCsv, string outputXmlFilePath = "output.xml")
+        static void Main(FileInfo inputXml, FileInfo currentSkusCsv, string outputXmlFilePath = "output.xml", bool skipHeadersInCsv =false)
         {
-            var existingSkus = Utility.LoadExistingValues(currentSkusCsv.FullName, skipHeaders:true);
+            var existingSkus = Utility.LoadExistingValues(currentSkusCsv.FullName, skipHeadersInCsv);
 
             var processor = new XmlProcessor(inputXml.FullName, outputXmlFilePath, (id) => existingSkus.Contains(id), "entry", "item_group_id");
 

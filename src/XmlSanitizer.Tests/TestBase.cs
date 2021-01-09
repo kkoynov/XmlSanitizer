@@ -10,6 +10,7 @@ namespace XmlSanitizer.Tests
     {
         protected string elementNameToReduce = "entry";
         protected string elementNameToFilterOn = "item_group_id";
+
         public string RunProcessor(Stream inputXmlStream, HashSet<string> existingSkus, string nameOfElementsToReduce, string nameOfTheElementsToFilterOn)
         {
             using (var outputStream = new MemoryStream())

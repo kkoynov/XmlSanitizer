@@ -13,9 +13,7 @@ namespace XmlSanitizer.Core
         private string NameOfElementsToReduce { get; }
         private string NameOfTheElementsToFilterOn { get; }
 
-
         private Func<string, bool> Predicate { get; }
-
 
         public XmlProcessor(string inputXmlPath, string outputXmlPath, Func<string,bool> filterPredicate, string nameOfElementsToReduce, string nameOfTheElementsToFilterOn) 
             : this(File.OpenRead(inputXmlPath), File.OpenRead(outputXmlPath), filterPredicate, nameOfElementsToReduce, nameOfTheElementsToFilterOn)
