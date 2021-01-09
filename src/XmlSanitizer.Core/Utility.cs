@@ -7,12 +7,22 @@ namespace XmlSanitizer.Core
 {
     public class Utility
     {
-        public static HashSet<string> LoadCsv(string filePath)
+        /// <summary>
+        /// Load from a csv like file the existing values.
+        /// </summary>
+        /// <param name="filePath">Path to the file</param>
+        /// <param name="skipHeaders">Whether first row should be omitted. </param>
+        /// <returns></returns>
+        public static HashSet<string> LoadExistingValues(string filePath, bool skipHeaders = true)
         {
             var result = new HashSet<string>();
             using (var reader = new StreamReader(filePath))
-            //using (var csv = new TextReader(reader))
             {
+                if (skipHeaders && reader.EndOfStream == false)
+                {
+                    reader.ReadLine();
+                }
+
                 while(reader.EndOfStream == false)
                 {
                     string line = reader.ReadLine();

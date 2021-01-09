@@ -13,7 +13,7 @@ namespace XmlSanitizer.CLI
         /// <param name="outputXmlFilePath">The path to the output xml file.Default is output.xml</param>
         static void Main(FileInfo inputXml, FileInfo currentSkusCsv, string outputXmlFilePath = "output.xml")
         {
-            var existingSkus = Utility.LoadCsv(currentSkusCsv.FullName);
+            var existingSkus = Utility.LoadExistingValues(currentSkusCsv.FullName, skipHeaders:true);
 
             var processor = new XmlProcessor(inputXml.FullName, outputXmlFilePath, (id) => existingSkus.Contains(id));
 
