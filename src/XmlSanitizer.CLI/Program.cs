@@ -15,7 +15,7 @@ namespace XmlSanitizer.CLI
         {
             var existingSkus = Utility.LoadExistingValues(currentSkusCsv.FullName, skipHeaders:true);
 
-            var processor = new XmlProcessor(inputXml.FullName, outputXmlFilePath, (id) => existingSkus.Contains(id));
+            var processor = new XmlProcessor(inputXml.FullName, outputXmlFilePath, (id) => existingSkus.Contains(id), "entry", "item_group_id");
 
             processor.Process();
         }

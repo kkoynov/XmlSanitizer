@@ -14,7 +14,7 @@ namespace XmlSanitizer.Tests
             var inputXmlFilePath = Path.Combine("Resources", "test.xml");
             var existingSkus = Utility.LoadExistingValues(Path.Combine("Resources", "existingtest.csv"));
 
-            string resultXml = RunProcessor(inputXmlFilePath, existingSkus);
+            string resultXml = RunProcessor(inputXmlFilePath, existingSkus, elementNameToReduce, elementNameToFilterOn);
 
             Assert.AreEqual("<?xml version=\"1.0\" encoding=\"UTF-8\"?><feed></feed>", resultXml);
         }
@@ -25,7 +25,7 @@ namespace XmlSanitizer.Tests
             var inputXmlFilePath = Path.Combine("Resources", "test.xml");
             var existingSkus = new HashSet<string>() { "BUASL" };
     
-            string resultXml = RunProcessor(inputXmlFilePath, existingSkus);
+            string resultXml = RunProcessor(inputXmlFilePath, existingSkus, elementNameToReduce, elementNameToFilterOn);
 
             Assert.AreEqual(resultXml.Contains("<item_group_id>BUASL</item_group_id>"), true, "Should contain BUALS entry.");
             Assert.AreEqual(resultXml.Split("<entry>").Length, 2, "There should be only one entry.");
@@ -54,7 +54,7 @@ namespace XmlSanitizer.Tests
             var idOfLastNode = "F17DCA59-7F10-4357-A510-A83C244E046A";
             var existingSkus = new HashSet<string>() { idOfLastNode };
 
-            string resultXml = RunProcessor(inputXmlFilePath, existingSkus);
+            string resultXml = RunProcessor(inputXmlFilePath, existingSkus, elementNameToReduce, elementNameToFilterOn);
 
             Assert.AreEqual(resultXml.Contains($"<item_group_id>{idOfLastNode}</item_group_id>"), true, $"Should contain {idOfLastNode} entry.");
             Assert.AreEqual(resultXml.Split("<entry>").Length, 2, "There should be only one entry.");
@@ -68,7 +68,7 @@ namespace XmlSanitizer.Tests
             var idOfLastNode = "F17DCA59-7F10-4357-A510-A83C244E046A";
             var existingSkus = new HashSet<string>() { idOfLastNode, idOfFirstNode };
 
-            string resultXml = RunProcessor(inputXmlFilePath, existingSkus);
+            string resultXml = RunProcessor(inputXmlFilePath, existingSkus, elementNameToReduce, elementNameToFilterOn);
 
             Assert.AreEqual(resultXml.Contains($"<item_group_id>{idOfFirstNode}</item_group_id>"), true, $"Should contain {idOfFirstNode} entry.");
             Assert.AreEqual(resultXml.Contains($"<item_group_id>{idOfLastNode}</item_group_id>"), true, $"Should contain {idOfLastNode} entry.");

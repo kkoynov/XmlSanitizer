@@ -10,19 +10,25 @@ namespace XmlSanitizer.Core
     {
         private Stream InputXmlStream { get; }
         private Stream OutputXmlStream { get; }
+        private string NameOfElementsToReduce { get; }
+        private string NameOfTheElementsToFilterOn { get; }
+
+
         private Func<string, bool> Predicate { get; }
 
 
-        public XmlProcessor(string inputXmlPath, string outputXmlPath, Func<string,bool> predicate) 
-            : this(File.OpenRead(inputXmlPath), File.OpenRead(outputXmlPath), predicate)
+        public XmlProcessor(string inputXmlPath, string outputXmlPath, Func<string,bool> filterPredicate, string nameOfElementsToReduce, string nameOfTheElementsToFilterOn) 
+            : this(File.OpenRead(inputXmlPath), File.OpenRead(outputXmlPath), filterPredicate, nameOfElementsToReduce, nameOfTheElementsToFilterOn)
         {
         }
 
-        public XmlProcessor(Stream inputXmlStream, Stream outputXmlStream, Func<string, bool> predicate)
+        public XmlProcessor(Stream inputXmlStream, Stream outputXmlStream, Func<string, bool> filterPredicate, string nameOfElementsToReduce, string nameOfTheElementsToFIlterOn)
         {
             InputXmlStream = inputXmlStream;
             OutputXmlStream = outputXmlStream;
-            Predicate = predicate;
+            Predicate = filterPredicate;
+            NameOfElementsToReduce = nameOfElementsToReduce;
+            NameOfTheElementsToFilterOn = nameOfTheElementsToFIlterOn;
         }
 
         public void Process() 
@@ -35,30 +41,30 @@ namespace XmlSanitizer.Core
             {
                 XmlWriter currentWriter = mainWriter;
                 Stream entryElementStream = null;
-                bool processingEntry = false;
-                string groupId = "";
-                bool inGroupId = false;
+                bool processingTargetElement = false;
+                string filterPropertyName = "";
+                bool inFilterProperty = false;
                 while (reader.Read())
                 {
                     switch (reader.NodeType)
                     {
                         case XmlNodeType.Element:
-                            if (reader.Name == "entry")
+                            if (reader.Name == NameOfElementsToReduce)
                             {
-                                processingEntry = true;
+                                processingTargetElement = true;
                                 entryElementStream = new MemoryStream();
                                 currentWriter = XmlWriter.Create(entryElementStream);
                             }
-                            else if (reader.Name == "item_group_id" && processingEntry)
+                            else if (reader.Name == NameOfTheElementsToFilterOn && processingTargetElement)
                             {
-                                inGroupId = true;
+                                inFilterProperty = true;
                             }
                             currentWriter.WriteStartElement(reader.Name);
                             break;
                         case XmlNodeType.Text:
-                            if (inGroupId)
+                            if (inFilterProperty)
                             {
-                                groupId = reader.Value;
+                                filterPropertyName = reader.Value;
                             }
                             currentWriter.WriteString(reader.Value);
                             break;
@@ -71,27 +77,27 @@ namespace XmlSanitizer.Core
                             break;
                         case XmlNodeType.EndElement:
                             currentWriter.WriteFullEndElement();
-                            if (reader.Name == "entry")
+                            if (reader.Name == NameOfElementsToReduce)
                             {
                                 currentWriter.Close();
                                 entryElementStream.Position = 0;
-                                if (Predicate(groupId))
+                                if (Predicate(filterPropertyName))
                                 {
                                     WriteSubTree(mainWriter, entryElementStream);
                                     mainWriter.WriteRaw("\n");
                                 }
 
-                                processingEntry = false;
+                                processingTargetElement = false;
                                 currentWriter = mainWriter;
-                                groupId = "";
+                                filterPropertyName = "";
                             }
-                            if (reader.Name == "item_group_id")
+                            if (reader.Name == NameOfTheElementsToFilterOn)
                             {
-                                inGroupId = false;
+                                inFilterProperty = false;
                             }
                             break;
                         case XmlNodeType.Whitespace:
-                            if(processingEntry)
+                            if(processingTargetElement)
                                 currentWriter.WriteRaw(reader.Value);
                             break;
                     }

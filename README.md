@@ -19,7 +19,7 @@ Here's an example publishing for ubuntu 18.04, in release configuration with sel
 dotnet publish -c release -r ubuntu.16.04-x64 --self-contained
 ```
 from the <b>src</b> folder.
-When it comples succesfully you could grab the contents of src\XmlSanitizer\bin\Release\netcoreapp3.1\ubuntu.16.04-x64\publish and this is your 
+When it comples succesfully you could grab the contents of src\XmlSanitizer.CLI\bin\Release\netcoreapp3.1\ubuntu.16.04-x64\publish and this is your 
 self-contained ubuntu18.04 bundle.
 
 ---

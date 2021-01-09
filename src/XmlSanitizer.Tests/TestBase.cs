@@ -8,11 +8,13 @@ namespace XmlSanitizer.Tests
 {
     public class TestBase
     {
-        public string RunProcessor(Stream inputXmlStream, HashSet<string> existingSkus)
+        protected string elementNameToReduce = "entry";
+        protected string elementNameToFilterOn = "item_group_id";
+        public string RunProcessor(Stream inputXmlStream, HashSet<string> existingSkus, string nameOfElementsToReduce, string nameOfTheElementsToFilterOn)
         {
             using (var outputStream = new MemoryStream())
             {
-                var processor = new XmlProcessor(inputXmlStream, outputStream, (id) => existingSkus.Contains(id));
+                var processor = new XmlProcessor(inputXmlStream, outputStream, (id) => existingSkus.Contains(id), nameOfElementsToReduce, nameOfTheElementsToFilterOn);
                 processor.Process();
 
                 outputStream.Position = 0;
@@ -20,11 +22,11 @@ namespace XmlSanitizer.Tests
                 return reader.ReadToEnd();
             }
         }
-        public string RunProcessor(string inputXmlFilePath, HashSet<string> existingSkus)
+        public string RunProcessor(string inputXmlFilePath, HashSet<string> existingSkus, string nameOfElementsToReduce, string nameOfTheElementsToFilterOn)
         {
             using (var inputXmlStream = File.OpenRead(inputXmlFilePath))
             {
-                return this.RunProcessor(inputXmlStream, existingSkus);
+                return this.RunProcessor(inputXmlStream, existingSkus, nameOfElementsToReduce, nameOfTheElementsToFilterOn);
             }
         }
     }
