@@ -8,15 +8,22 @@ namespace XmlSanitizer.Core
 {
     public class XmlProcessor
     {
-        public string InputXmlPath { get; }
-        public string OutputXmlPath { get; }
-        public Func<string, bool> Predicate { get; }
+        private Stream InputXmlStream { get; }
+        private Stream OutputXmlStream { get; }
+        private Func<string, bool> Predicate { get; }
 
 
         public XmlProcessor(string inputXmlPath, string outputXmlPath, Func<string,bool> predicate)
         {
-            InputXmlPath = inputXmlPath;
-            OutputXmlPath = outputXmlPath;
+            InputXmlStream = File.OpenRead(inputXmlPath);
+            OutputXmlStream= File.OpenRead(outputXmlPath);
+            Predicate = predicate;
+        }
+
+        public XmlProcessor(Stream inputXmlStream, Stream outputXmlStream, Func<string, bool> predicate)
+        {
+            InputXmlStream = inputXmlStream;
+            OutputXmlStream = outputXmlStream;
             Predicate = predicate;
         }
 
@@ -25,8 +32,8 @@ namespace XmlSanitizer.Core
             var stopWatch = System.Diagnostics.Stopwatch.StartNew();
             stopWatch.Start();
 
-            using (var mainWriter = XmlWriter.Create(OutputXmlPath))
-            using (var reader = XmlReader.Create(InputXmlPath))
+            using (var mainWriter = XmlWriter.Create(InputXmlStream))
+            using (var reader = XmlReader.Create(OutputXmlStream))
             {
                 XmlWriter currentWriter = mainWriter;
                 Stream entryElementStream = null;

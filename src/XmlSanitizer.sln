@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlSanitizer", "XmlSanitizer\XmlSanitizer.csproj", "{1A08D359-4006-4781-884A-194F9F30DB01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlSanitizer.CLI", "XmlSanitizer\XmlSanitizer.CLI.csproj", "{1A08D359-4006-4781-884A-194F9F30DB01}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlSanitizer.Core", "XmlSanitizer.Core\XmlSanitizer.Core.csproj", "{46BBE32F-78AF-43CF-9A52-387C17B1EC37}"
 EndProject
