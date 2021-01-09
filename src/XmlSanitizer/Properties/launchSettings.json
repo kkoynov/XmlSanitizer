@@ -1,8 +1,7 @@
 {
   "profiles": {
     "XmlSanitizer": {
-      "commandName": "Project",
-      "commandLineArgs": "--feed-xml \".\\Resources\\Footshop_eu.xml\" --current-skus-csv=\".\\Resources\\existingtest.csv\" --output-xml=\"output.xml\""
+      "commandName": "Project"
     }
   }
 }

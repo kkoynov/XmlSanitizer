@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlSanitizer", "XmlSanitizer\XmlSanitizer.csproj", "{1A08D359-4006-4781-884A-194F9F30DB01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSanitizer.Core", "XmlSanitizer.Core\XmlSanitizer.Core.csproj", "{46BBE32F-78AF-43CF-9A52-387C17B1EC37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlSanitizer.Core", "XmlSanitizer.Core\XmlSanitizer.Core.csproj", "{46BBE32F-78AF-43CF-9A52-387C17B1EC37}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlSanitizer.Tests", "XmlSanitizer.Tests\XmlSanitizer.Tests.csproj", "{8DCFAA71-D644-446D-9C8E-C4750B77D972}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{46BBE32F-78AF-43CF-9A52-387C17B1EC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46BBE32F-78AF-43CF-9A52-387C17B1EC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46BBE32F-78AF-43CF-9A52-387C17B1EC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
