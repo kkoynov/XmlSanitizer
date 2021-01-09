@@ -13,7 +13,8 @@ namespace XmlSanitizer.Core
         private Func<string, bool> Predicate { get; }
 
 
-        public XmlProcessor(string inputXmlPath, string outputXmlPath, Func<string,bool> predicate) : this(File.OpenRead(inputXmlPath), File.OpenRead(outputXmlPath), predicate)
+        public XmlProcessor(string inputXmlPath, string outputXmlPath, Func<string,bool> predicate) 
+            : this(File.OpenRead(inputXmlPath), File.OpenRead(outputXmlPath), predicate)
         {
         }
 

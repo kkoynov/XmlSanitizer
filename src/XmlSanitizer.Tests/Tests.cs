@@ -6,37 +6,27 @@ using XmlSanitizer.Core;
 namespace XmlSanitizer.Tests
 {
     [TestClass]
-    public class Tests
+    public class Tests : TestBase
     {
         [TestMethod]
         public void TestNoneMatching()
         {
-            var inputXmlStream = File.OpenRead(Path.Combine("Resources", "test.xml"));
+            var inputXmlFilePath = Path.Combine("Resources", "test.xml");
             var existingSkus = Utility.LoadExistingValues(Path.Combine("Resources", "existingtest.csv"));
-            var outputStream = new MemoryStream();
 
-            var processor = new XmlProcessor(inputXmlStream, outputStream, (id) => existingSkus.Contains(id));
-            processor.Process();
+            string resultXml = RunProcessor(inputXmlFilePath, existingSkus);
 
-            outputStream.Position = 0;
-            StreamReader reader = new StreamReader(outputStream);
-            string resultXml = reader.ReadToEnd();
             Assert.AreEqual("<?xml version=\"1.0\" encoding=\"UTF-8\"?><feed></feed>", resultXml);
         }
 
         [TestMethod]
         public void TestSingleMatching()
         {
-            var inputXmlStream = File.OpenRead(Path.Combine("Resources", "test.xml"));
+            var inputXmlFilePath = Path.Combine("Resources", "test.xml");
             var existingSkus = new HashSet<string>() { "BUASL" };
-            var outputStream = new MemoryStream();
+    
+            string resultXml = RunProcessor(inputXmlFilePath, existingSkus);
 
-            var processor = new XmlProcessor(inputXmlStream, outputStream, (id) => existingSkus.Contains(id));
-            processor.Process();
-
-            outputStream.Position = 0;
-            StreamReader reader = new StreamReader(outputStream);
-            string resultXml = reader.ReadToEnd();
             Assert.AreEqual(resultXml.Contains("<item_group_id>BUASL</item_group_id>"), true, "Should contain BUALS entry.");
             Assert.AreEqual(resultXml.Split("<entry>").Length, 2, "There should be only one entry.");
         }
@@ -56,5 +46,34 @@ namespace XmlSanitizer.Tests
 
             Assert.AreEqual(existingSkus.Contains("SKUs"), true);
         }
+
+        [TestMethod]
+        public void TestFootshopSingleMatchinOnLastEntry()
+        {
+            var inputXmlFilePath = Path.Combine("Resources", "Footshop_eu.xml");
+            var idOfLastNode = "F17DCA59-7F10-4357-A510-A83C244E046A";
+            var existingSkus = new HashSet<string>() { idOfLastNode };
+
+            string resultXml = RunProcessor(inputXmlFilePath, existingSkus);
+
+            Assert.AreEqual(resultXml.Contains($"<item_group_id>{idOfLastNode}</item_group_id>"), true, $"Should contain {idOfLastNode} entry.");
+            Assert.AreEqual(resultXml.Split("<entry>").Length, 2, "There should be only one entry.");
+        }
+
+        [TestMethod]
+        public void TestFootshopTwoMatchingOnFirstAndLastEntries()
+        {
+            var inputXmlFilePath = Path.Combine("Resources", "Footshop_eu.xml");
+            var idOfFirstNode = "BEE4B228-0E0C-4EBF-81AE-49C10B8144FD";
+            var idOfLastNode = "F17DCA59-7F10-4357-A510-A83C244E046A";
+            var existingSkus = new HashSet<string>() { idOfLastNode, idOfFirstNode };
+
+            string resultXml = RunProcessor(inputXmlFilePath, existingSkus);
+
+            Assert.AreEqual(resultXml.Contains($"<item_group_id>{idOfFirstNode}</item_group_id>"), true, $"Should contain {idOfFirstNode} entry.");
+            Assert.AreEqual(resultXml.Contains($"<item_group_id>{idOfLastNode}</item_group_id>"), true, $"Should contain {idOfLastNode} entry.");
+            Assert.AreEqual(resultXml.Split("<entry>").Length, 3, "There should be only two entries.");
+        }
+
     }
 }

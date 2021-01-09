@@ -5,21 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\existingtest.csv" />
-    <None Remove="Resources\Footshop_eu.xml" />
-    <None Remove="Resources\test.xml" />
+	<None Remove="Resources\**\*.*" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\existingtest.csv">
+    <Content Include="Resources\**\*.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Footshop_eu.xml">
+    <Content Include="Resources\**\*.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\test.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+	<None Include="Resources\README.txt" />
   </ItemGroup>
 
   <ItemGroup>
