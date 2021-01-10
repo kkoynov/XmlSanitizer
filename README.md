@@ -2,16 +2,16 @@
 An attempt to port tiny PHP xml sanitizing code to net core 3.1 and measure performance. It ustilizes a line by line xml parsing and have some heavy assumption 
 about the schema of the input xml and the existing skus "csv". These would, hopefully, get generalized.
 
-# Build
+## Build
 To build the tool you'll need [dot net core 3.1 sdk](https://dotnet.microsoft.com/download/dotnet-core/3.1) installed on your machine.
 run the following command at the root repo folder
 ```
 dotnet build
 ```
-# Develop
+## Develop
 You could use [Visual Studio](https://visualstudio.microsoft.com/downloads/)(VS Community, VS Code or VS for Mac) to build and test. 
 
-# Publish
+## Publish
 You would need to use the [dotnet publish](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish) command to create a bundle.
 
 Here's an example publishing for ubuntu 18.04, in release configuration with self-contained mode eneabled
@@ -33,7 +33,7 @@ so the tool gets execution permitions.
 
 ---
 
-# Test
+## Test
 To execute the tests you need to have dot net core 3.1 installed on the machine. Then go to the src folder and execute:
 ```
 dotnet test
