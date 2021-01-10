@@ -40,6 +40,6 @@ jobs:
       uses: Roang-zero1/github-upload-release-artifacts-action@master
       with:
         args:
-        - ./src/XmlSanitizer.CLI/bin/elease/netcoreapp3.1/ubuntu.18.04-x64/publish/
+        - ./src/XmlSanitizer.CLI/bin/release/netcoreapp3.1/ubuntu.18.04-x64/publish/
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
