@@ -1,12 +1,10 @@
-name: .NET
+name: .NET Build & Release
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
-name: Build & Release
 
 jobs:
   build:
