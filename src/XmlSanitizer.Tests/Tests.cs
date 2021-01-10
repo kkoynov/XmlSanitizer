@@ -63,7 +63,6 @@ namespace XmlSanitizer.Tests
         [TestMethod]
         public void TestFootshopTwoMatchingOnFirstAndLastEntries()
         {
-            Assert.Fail();
             var inputXmlFilePath = Path.Combine("Resources", "Footshop_eu.xml");
             var idOfFirstNode = "BEE4B228-0E0C-4EBF-81AE-49C10B8144FD";
             var idOfLastNode = "F17DCA59-7F10-4357-A510-A83C244E046A";
