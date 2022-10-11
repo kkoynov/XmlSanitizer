@@ -15,7 +15,7 @@ namespace XmlSanitizer.Tests
         {
             using (var outputStream = new MemoryStream())
             {
-                var processor = new XmlProcessor(inputXmlStream, outputStream, (id) => existingSkus.Contains(id), nameOfElementsToReduce, nameOfTheElementsToFilterOn);
+                var processor = new DefaultXmlProcessor(inputXmlStream, outputStream, (id) => existingSkus.Contains(id), nameOfElementsToReduce, nameOfTheElementsToFilterOn);
                 processor.Process();
 
                 outputStream.Position = 0;
