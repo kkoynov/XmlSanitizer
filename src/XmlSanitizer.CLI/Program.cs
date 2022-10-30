@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using XmlSanitizer.Core;
+using XmlSanitizer.Core.Interfaces;
+using XmlSanitizer.Core.Processors;
 
 namespace XmlSanitizer.CLI
 {
@@ -16,9 +18,16 @@ namespace XmlSanitizer.CLI
         {
             var existingSkus = Utility.LoadExistingValues(currentSkusCsv.FullName, skipHeadersInCsv);
 
-            var processor = new DefaultXmlProcessor(inputXml.FullName, outputXmlFilePath, (id) => existingSkus.Contains(id), "entry", "item_group_id");
+            var processor = new DefaultXmlProcessor();
 
-            processor.Process();
+            processor.Process(new ProcessRequest()
+            {
+                InputXmlStream = File.OpenRead(inputXml.FullName),
+                OutputXmlStream = File.OpenWrite(outputXmlFilePath),
+                FilterOutPredicate = existingSkus.Contains,
+                NameOfElementsToReduce = "entry",
+                NameOfTheElementsToFilterOn = "item_group_id"
+            });
         }
     }
 }
