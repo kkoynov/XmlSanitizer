@@ -19,7 +19,6 @@ jobs:
         dotnet-version: |
           3.1.x
           6.0.x
-          4.8.x
           7.0.100-preview.7.22377.5
     - name: Restore dependencies
       run: dotnet restore ./src/
