@@ -15,6 +15,17 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "XamlSanitizer.TestAndBenchm
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dev", "Dev", "{13E50C26-3B99-489A-B4DF-1D79D1AD4A05}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C616DB44-945D-4573-BD2C-C69827DB3B17}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubWorkflows", "GitHubWorkflows", "{8F953E17-A2CC-4EAE-85AF-C0CAFF12E175}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\dotnet-release.yml = ..\.github\workflows\dotnet-release.yml
+		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

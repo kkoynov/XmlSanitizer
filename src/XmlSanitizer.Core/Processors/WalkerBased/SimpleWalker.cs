@@ -2,7 +2,7 @@
 using System.Xml;
 using XmlSanitizer.Core.Interfaces;
 
-namespace XmlSanitizer.Core.Processors.WalkerBased.WalkerBasedXmlProcessor
+namespace XmlSanitizer.Core.Processors.WalkerBased
 {
     internal struct SimpleWalker
     {

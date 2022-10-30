@@ -1,9 +1,8 @@
 ﻿using System.IO;
-using XmlSanitizer.Core;
 using XmlSanitizer.Core.Interfaces;
 using XmlSanitizer.Core.Processors;
 
-namespace XmlSanitizer.CLI
+namespace XmlSanitizer.Core
 {
     class Program
     {
@@ -14,7 +13,7 @@ namespace XmlSanitizer.CLI
         /// <param name="currentSkusCsv"></param>
         /// <param name="outputXmlFilePath">The path to the output xml file.Default is output.xml</param>
         /// <param name="skipHeadersInCsv"></param>
-        static void Main(FileInfo inputXml, FileInfo currentSkusCsv, string outputXmlFilePath = "output.xml", bool skipHeadersInCsv =false)
+        static void Main(FileInfo inputXml, FileInfo currentSkusCsv, string outputXmlFilePath = "output.xml", bool skipHeadersInCsv = false)
         {
             var existingSkus = Utility.LoadExistingValues(currentSkusCsv.FullName, skipHeadersInCsv);
 

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Xml;
 using XmlSanitizer.Core.Interfaces;
-using XmlSanitizer.Core.Processors.WalkerBased.WalkerBasedXmlProcessor;
 
-namespace XmlSanitizer.Core.Processors
+namespace XmlSanitizer.Core.Processors.WalkerBased
 {
     public class WalkerBasedXmlProcessor : IXmlProcessor
     {

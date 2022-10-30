@@ -7,7 +7,6 @@ using XmlSanitizer.Core;
 using XmlSanitizer.Core.Interfaces;
 using XmlSanitizer.Core.Processors;
 using XmlSanitizer.Core.Processors.WalkerBased;
-using XmlSanitizer.Core.Processors.WalkerBased.WalkerBasedXmlProcessor;
 
 namespace XmlSanitizer.Tests
 {

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using XmlSanitizer.Core.Interfaces;
 using XmlSanitizer.Core.Processors;
+using XmlSanitizer.Core.Processors.WalkerBased;
 
 namespace XamlSanitizer.Benchmarks
 {
