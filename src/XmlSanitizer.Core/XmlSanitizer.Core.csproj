@@ -4,8 +4,4 @@
 	<TargetFrameworks>netstandard2.1;net481</TargetFrameworks>
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="PolySharp" Version="1.7.1" />
-  </ItemGroup>
 </Project>
