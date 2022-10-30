@@ -6,11 +6,11 @@ namespace XmlSanitizer.Core.Processors.WalkerBased
 {
     internal struct SimpleWalker
     {
-        XmlReader Reader { get; init; }
-        XmlWriter MainWriter { get; init; }
-        XmlWriter CurrentWriter { get; set; }
+        XmlReader Reader { get; set; }
+        XmlWriter MainWriter { get; set; }
+        XmlWriter CurrentWriter { get; set; }   
 
-        ProcessRequest Request { get; init; }
+        ProcessRequest Request { get; set; }
 
         Stream EntryElementStream { get; set; }
 
