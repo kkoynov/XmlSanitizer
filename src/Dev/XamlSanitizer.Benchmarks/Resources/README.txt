@@ -1,0 +1,1 @@
+﻿Tests depend on the exact state of the files in this folder. Please make sure you run the tests prior to committing changes here!

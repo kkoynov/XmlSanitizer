@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>XmlSanitizer</AssemblyName>
+    <Configurations>Debug;Release;Benchmarks</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

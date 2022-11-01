@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmlSanitizer.CLI", "XmlSani
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlSanitizer.Benchmarks", "Dev\XamlSanitizer.Benchmarks\XamlSanitizer.Benchmarks.csproj", "{A4065F8D-4E41-4ABE-81D6-72A7BD0A3602}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "XamlSanitizer.TestAndBenchmarkResources", "Dev\TestAndBenchmarkResources\XamlSanitizer.TestAndBenchmarkResources.shproj", "{976A7958-1E78-41BE-BBCB-9B5B013AF546}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dev", "Dev", "{13E50C26-3B99-489A-B4DF-1D79D1AD4A05}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C616DB44-945D-4573-BD2C-C69827DB3B17}"
@@ -28,26 +26,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubWorkflows", "GitHubWo
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Benchmarks|Any CPU = Benchmarks|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46BBE32F-78AF-43CF-9A52-387C17B1EC37}.Benchmarks|Any CPU.ActiveCfg = Benchmarks|Any CPU
+		{46BBE32F-78AF-43CF-9A52-387C17B1EC37}.Benchmarks|Any CPU.Build.0 = Benchmarks|Any CPU
 		{46BBE32F-78AF-43CF-9A52-387C17B1EC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{46BBE32F-78AF-43CF-9A52-387C17B1EC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46BBE32F-78AF-43CF-9A52-387C17B1EC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46BBE32F-78AF-43CF-9A52-387C17B1EC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Benchmarks|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Benchmarks|Any CPU.Build.0 = Release|Any CPU
 		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DCFAA71-D644-446D-9C8E-C4750B77D972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A697E1B0-3E0D-4224-9150-93709BEA1F06}.Benchmarks|Any CPU.ActiveCfg = Release|Any CPU
+		{A697E1B0-3E0D-4224-9150-93709BEA1F06}.Benchmarks|Any CPU.Build.0 = Release|Any CPU
 		{A697E1B0-3E0D-4224-9150-93709BEA1F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A697E1B0-3E0D-4224-9150-93709BEA1F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A697E1B0-3E0D-4224-9150-93709BEA1F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A697E1B0-3E0D-4224-9150-93709BEA1F06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4065F8D-4E41-4ABE-81D6-72A7BD0A3602}.Benchmarks|Any CPU.ActiveCfg = Benchmarks|Any CPU
+		{A4065F8D-4E41-4ABE-81D6-72A7BD0A3602}.Benchmarks|Any CPU.Build.0 = Benchmarks|Any CPU
 		{A4065F8D-4E41-4ABE-81D6-72A7BD0A3602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4065F8D-4E41-4ABE-81D6-72A7BD0A3602}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4065F8D-4E41-4ABE-81D6-72A7BD0A3602}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4065F8D-4E41-4ABE-81D6-72A7BD0A3602}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,15 +60,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8DCFAA71-D644-446D-9C8E-C4750B77D972} = {13E50C26-3B99-489A-B4DF-1D79D1AD4A05}
 		{A4065F8D-4E41-4ABE-81D6-72A7BD0A3602} = {13E50C26-3B99-489A-B4DF-1D79D1AD4A05}
-		{976A7958-1E78-41BE-BBCB-9B5B013AF546} = {13E50C26-3B99-489A-B4DF-1D79D1AD4A05}
 		{8F953E17-A2CC-4EAE-85AF-C0CAFF12E175} = {C616DB44-945D-4573-BD2C-C69827DB3B17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05BD1965-C265-44F9-A2D2-8F3D0E14A927}
-	EndGlobalSection
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Dev\TestAndBenchmarkResources\TestAndBenchmarkResources.projitems*{8dcfaa71-d644-446d-9c8e-c4750b77d972}*SharedItemsImports = 5
-		Dev\TestAndBenchmarkResources\TestAndBenchmarkResources.projitems*{976a7958-1e78-41be-bbcb-9b5b013af546}*SharedItemsImports = 13
-		Dev\TestAndBenchmarkResources\TestAndBenchmarkResources.projitems*{a4065f8d-4e41-4abe-81d6-72a7bd0a3602}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

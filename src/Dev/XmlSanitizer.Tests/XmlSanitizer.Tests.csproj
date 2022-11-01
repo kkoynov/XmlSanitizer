@@ -1,9 +1,32 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp6.0</TargetFramework>
 	<LangVersion>preview</LangVersion>
+	<Configurations>Debug;Release;Benchmarks</Configurations>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\existingtest.csv" />
+    <None Remove="Resources\Footshop_eu.xml" />
+    <None Remove="Resources\test.xml" />
+    <None Remove="Resources\test2.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\existingtest.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Footshop_eu.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\test.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\test2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions.Reactive" Version="0.2.0" />
@@ -15,7 +38,5 @@
   <ItemGroup>
     <ProjectReference Include="..\..\XmlSanitizer.Core\XmlSanitizer.Core.csproj" />
   </ItemGroup>
-
-  <Import Project="..\TestAndBenchmarkResources\TestAndBenchmarkResources.projitems" Label="Shared" />
 
 </Project>

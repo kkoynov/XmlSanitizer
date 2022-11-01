@@ -1,12 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFrameworks>net6.0;net7.0;net481</TargetFrameworks>
-    <!--<ImplicitUsings>enable</ImplicitUsings>-->
     <Nullable>enable</Nullable>
     <OutputType>Exe</OutputType>
     <LangVersion>preview</LangVersion>
+    <Configurations>Debug;Release;Benchmarks</Configurations>
   </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Benchmarks'">
+		<TargetFrameworks>net481;net6.0;</TargetFrameworks>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' != 'Benchmarks'">
+		<TargetFrameworks>net6.0;</TargetFrameworks>
+    </PropertyGroup>
+	
+  <ItemGroup>
+    <None Remove="Resources\existingtest.csv" />
+    <None Remove="Resources\Footshop_eu.xml" />
+    <None Remove="Resources\test.xml" />
+    <None Remove="Resources\test2.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\existingtest.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Footshop_eu.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\test.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\test2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.2" />
@@ -15,7 +44,4 @@
   <ItemGroup>
     <ProjectReference Include="..\..\XmlSanitizer.Core\XmlSanitizer.Core.csproj" />
   </ItemGroup>
-
-  <Import Project="..\TestAndBenchmarkResources\TestAndBenchmarkResources.projitems" Label="Shared" />
-
 </Project>
